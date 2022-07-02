@@ -6,7 +6,7 @@ namespace EFCore_Activity0301
     public sealed class ConfigurationBuilderSingleton
     {
         private static ConfigurationBuilderSingleton? _instance;
-        private static readonly object instanceLock = new object();
+        private static readonly object instanceLock = new ();
 
         private static IConfigurationRoot? _configuration;
 
@@ -25,10 +25,8 @@ namespace EFCore_Activity0301
             {
                 lock (instanceLock)
                 {
-                    if (_instance == null)
-                    {
-                        _instance = new ConfigurationBuilderSingleton();
-                    }
+                    if (_instance == null) _instance = new ();
+
                     return _instance;
                 }
             }
