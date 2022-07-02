@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using EFCore_Activity0301;
 using EFCore_DBLibrary;
+using InventoryHelpers;
 using InventoryModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
