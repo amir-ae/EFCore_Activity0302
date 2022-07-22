@@ -7,9 +7,10 @@ namespace InventoryModels
     public class Item : FullAuditModel
     {
         [StringLength(InventoryModelsConstants.MAX_NAME_LENGTH)]
-        public string? Name { get; set; }
+        [Required]
+        public string Name { get; set; } = string.Empty;
 
-        [Range(0, int.MaxValue)]
+        [Range(InventoryModelsConstants.MINIMUM_QUANTITY, InventoryModelsConstants.MAXIMUM_QUANTITY)]
         public int Quantity { get; set; }
 
         [StringLength(InventoryModelsConstants.MAX_DESCRIPTION_LENGTH)]
@@ -28,9 +29,18 @@ namespace InventoryModels
         public DateTime? SoldDate { get; set; }
 
         [Column(TypeName = "decimal (9, 2)")]
+        [Range(InventoryModelsConstants.MINIMUM_PRICE, InventoryModelsConstants.MAXIMUM_PRICE)]
         public decimal? PurchasePrice { get; set; }
 
         [Column(TypeName = "decimal (9, 2)")]
         public decimal? CurrentOrFinalPrice { get; set; }
+
+        public int? CategoryId { get; set; }
+
+        public virtual Category? Category { get; set; }
+
+        public virtual List<Player> Players { get; set; } = new();
+
+        public virtual List<ItemGenre> ItemGenres { get; set; } = new();
     }
 }

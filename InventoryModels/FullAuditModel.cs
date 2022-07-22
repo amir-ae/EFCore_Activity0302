@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryModels
 {
-    public abstract class FullAuditModel : IIdentityModel, IAuditedModel, IsActivatableModel
+    public abstract class FullAuditModel : IIdentityModel, IAuditedModel, IsActivatableModel, ISoftDeletable
     {
-        [Range(0, int.MaxValue)]
+        [Key]
         public int Id { get ; set; }
 
         public Guid? CreatedByUserId { get; set; }
@@ -22,5 +22,9 @@ namespace InventoryModels
 
         [DefaultValue(true)]
         public bool IsActive { get; set; }
+
+        [Required]
+        [DefaultValue(false)]
+        public bool IsDeleted { get; set; }
     }
 }

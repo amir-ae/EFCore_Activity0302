@@ -5,7 +5,7 @@ namespace InventoryHelpers
     public sealed class ConfigurationBuilderSingleton
     {
         private static ConfigurationBuilderSingleton? _instance;
-        private static readonly object instanceLock = new ();
+        private static readonly object instanceLock = new();
 
         private static IConfigurationRoot? _configuration;
 
@@ -24,7 +24,7 @@ namespace InventoryHelpers
             {
                 lock (instanceLock)
                 {
-                    if (_instance == null) _instance = new ();
+                    if (_instance == null) _instance = new();
 
                     return _instance;
                 }
